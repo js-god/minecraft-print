@@ -1,0 +1,121 @@
+
+
+Size and offset (moved to top)
+
+----
+
+Set build area - (must be done prior to printing)
+(option to choose block to use - eg. bedrock or None (invisible))
+
+If existing undo file then "Do you want to restore first?" - yes / no / cancel
+
+Creates undo (always)
+
+Draws area - if not invisible
+
+
+
+----
+
+Remove build plate 
+
+Restores based on undo (if exists)
+Removes undo file
+
+Build area still set - but no longer warn if create new build area
+
+
+----
+
+Clear all blocks from build area
+
+If not pi then creates undo (overwrites existing)
+If Pi then warn - no undo - do you want to continue?
+
+Restore all blocks (only if undo created)
+
+This will destroy anything you've created are you sure?
+Yes/No
+
+----
+
+Save to file (requests filename)
+
+Stored in prints folder
+
+
+------ 
+
+File -> Quit 
+
+Do you want to remove build area
+
+
+
+
+
+
+
+
+# Pre -req
+
+sudo apt install python3-pyqt5
+
+
+
+
+For Linux - Bukkit with RaspberryJuice plugin (not required for Minecraft Pi edition)
+
+sudo pip3 install mcpi
+
+
+OpenSCAD
+
+apt install  (? Pi?)
+
+For Ubuntu 
+Download image from:
+http://www.openscad.org/downloads.html
+move to /usr/local/bin
+sudo cp OpenSCAD-Release-0-Build36.49.glibc2.14-x86_64.AppImage /usr/local/bin
+Set permissions
+sudo chmod +x OpenSCAD-Release-0-Build36.49.glibc2.14-x86_64.AppImage 
+create link
+sudo vi /usr/local/bin/openscad
+
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0 /usr/local/bin/OpenSCAD-Release-0-Build36.49.glibc2.14-x86_64.AppImage 
+
+chmod +x /usr/local/bin/openscad
+
+Now run from any directory (can also add to start menu)
+
+# Launch QT designer
+
+designer -qt5
+
+
+# Convert GUI to py
+
+pyuic5 mcpgui.ui -o mcpgui.py
+
+(from pyqt5-dev-tools)
+
+
+
+# Reduce error messages
+
+sudo apt install at-spi2-core
+
+
+
+need to add override for raspberry pi
+
+
+
+
+
+##############
+Limitations
+
+Do not convert 1/2 block into full block (unable to get block state)
+Does not work with 1/2 stairs (eg. corner stair)
